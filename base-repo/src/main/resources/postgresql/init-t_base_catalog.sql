@@ -1,0 +1,2 @@
+INSERT INTO public.t_base_catalog(catalog_id,catalog_name,catalog_alias,catalog_desc,status,operator,update_time,create_time) VALUES (nextval('t_base_catalog_catalog_id_seq'::regclass),'COUNTRY_ALL_SET','C_A_S','国家全部集合','1','SYSTEM',current_timestamp,current_timestamp);
+INSERT INTO public.t_base_catalog(catalog_id,catalog_name,catalog_alias,catalog_desc,status,operator,update_time,create_time) VALUES (nextval('t_base_catalog_catalog_id_seq'::regclass),'CURRENCY_ALL_SET','C_M_A_S','币种全部集合','1','SYSTEM',current_timestamp,current_timestamp);

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.CurrencyGroupDOMapper">
+  <resultMap id="BaseResultMap" type="org.cuber.base.repo.model.CurrencyGroupDO">
+    <id column="currency_group_id" jdbcType="INTEGER" property="currencyGroupId" />
+    <result column="catalog_item_id" jdbcType="INTEGER" property="catalogItemId" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="group_index" jdbcType="INTEGER" property="groupIndex" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    currency_group_id, catalog_item_id, currency_id, group_index, status, operator, update_time, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_base_currency_group
+    where currency_group_id = #{currencyGroupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_base_currency_group
+    where currency_group_id = #{currencyGroupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cuber.base.repo.model.CurrencyGroupDO">
+    <selectKey keyProperty="currencyGroupId" resultType="int" order="BEFORE">
+      SELECT nextval('t_base_currency_group_currency_group_id_seq'::regclass) as currency_group_id
+    </selectKey>
+    insert into t_base_currency_group (currency_group_id, catalog_item_id, currency_id, 
+      group_index, status, operator, 
+      update_time, create_time)
+    values (#{currencyGroupId,jdbcType=INTEGER}, #{catalogItemId,jdbcType=INTEGER}, #{currencyId,jdbcType=INTEGER}, 
+      #{groupIndex,jdbcType=INTEGER}, '1', #{operator,jdbcType=VARCHAR},
+    current_timestamp, current_timestamp)
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.cuber.base.repo.model.CurrencyGroupDO">
+    update t_base_currency_group
+    set catalog_item_id = #{catalogItemId,jdbcType=INTEGER},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      group_index = #{groupIndex,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      update_time = current_timestamp
+    where currency_group_id = #{currencyGroupId,jdbcType=INTEGER}
+  </update>
+</mapper>

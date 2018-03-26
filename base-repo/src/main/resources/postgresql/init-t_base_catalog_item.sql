@@ -1,0 +1,1 @@
+INSERT INTO public.t_base_catalog_item(catalog_item_id,catalog_id,item_name,item_value,item_desc,item_position,status,operator,update_time,create_time) VALUES (nextval('t_base_catalog_item_catalog_item_id_seq'::regclass),'COUNTRY_ALL_SET',1,'EU','EU','SYSTEM',current_timestamp,current_timestamp);

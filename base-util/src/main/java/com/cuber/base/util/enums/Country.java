@@ -1,4 +1,4 @@
-package com.wpay.base.util.enums;
+package com.cuber.base.util.enums;
 
 
 public enum Country {

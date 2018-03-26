@@ -56,3 +56,14 @@ CREATE TABLE t_base_country_group(
   update_time TIMESTAMP WITHOUT TIME ZONE,
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
+
+CREATE TABLE t_base_currency_group(
+  currency_group_id SERIAL4 PRIMARY KEY NOT NULL ,
+  catalog_item_id INT,
+  currency_id INT,
+  group_index INT,
+  status VARCHAR(2),
+  operator VARCHAR(64),
+  update_time TIMESTAMP WITHOUT TIME ZONE,
+  create_time TIMESTAMP WITHOUT TIME ZONE
+);

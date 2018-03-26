@@ -1,6 +1,6 @@
 package org.cuber.base.repo.mapper;
 
-import com.wpay.base.util.enums.Currency;
+import com.cuber.base.util.enums.Currency;
 import org.cuber.base.repo.BaseRepoApplication;
 import org.cuber.base.repo.model.CurrencyDO;
 import org.junit.Test;
