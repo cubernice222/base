@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.RepoUtilsMapper">
+    <update id="truncateTable" parameterType="java.lang.String">
+      TRUNCATE TABLE ${tableName}
+    </update>
+</mapper>

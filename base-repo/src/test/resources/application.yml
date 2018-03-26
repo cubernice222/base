@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://172.168.3.19:5432/base
+    username: base
+    driver-class-name: org.postgresql.Driver
+    password: base
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: select 1
+  application:
+    name: base

@@ -112,4 +112,21 @@ public class CurrencyDO {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "CurrencyDO{" +
+                "currencyId=" + currencyId +
+                ", alphaCode='" + alphaCode + '\'' +
+                ", numberCode='" + numberCode + '\'' +
+                ", minorUnit=" + minorUnit +
+                ", symbolCurrency='" + symbolCurrency + '\'' +
+                ", localeMessage='" + localeMessage + '\'' +
+                ", zhCnName='" + zhCnName + '\'' +
+                ", status='" + status + '\'' +
+                ", operator='" + operator + '\'' +
+                ", updateTime=" + updateTime +
+                ", createTime=" + createTime +
+                '}';
+    }
 }
