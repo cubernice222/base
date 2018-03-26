@@ -7,11 +7,8 @@ public interface CatalogDOMapper {
 
     int insert(CatalogDO record);
 
-    int insertSelective(CatalogDO record);
 
     CatalogDO selectByPrimaryKey(Integer catalogId);
-
-    int updateByPrimaryKeySelective(CatalogDO record);
 
     int updateByPrimaryKey(CatalogDO record);
 }

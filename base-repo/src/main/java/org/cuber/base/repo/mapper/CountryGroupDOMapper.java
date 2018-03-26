@@ -7,11 +7,7 @@ public interface CountryGroupDOMapper {
 
     int insert(CountryGroupDO record);
 
-    int insertSelective(CountryGroupDO record);
-
     CountryGroupDO selectByPrimaryKey(Integer groupItemId);
-
-    int updateByPrimaryKeySelective(CountryGroupDO record);
 
     int updateByPrimaryKey(CountryGroupDO record);
 }

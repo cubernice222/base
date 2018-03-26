@@ -7,11 +7,7 @@ public interface CurrencyDOMapper {
 
     int insert(CurrencyDO record);
 
-    int insertSelective(CurrencyDO record);
-
     CurrencyDO selectByPrimaryKey(Integer currencyId);
-
-    int updateByPrimaryKeySelective(CurrencyDO record);
 
     int updateByPrimaryKey(CurrencyDO record);
 }
