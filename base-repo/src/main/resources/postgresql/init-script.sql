@@ -1,5 +1,5 @@
 CREATE TABLE t_base_country(
-  country_id SERIAL PRIMARY KEY NOT NULL ,
+  country_id SERIAL4 PRIMARY KEY NOT NULL , -- SERIAL4不但会生成主键,而且不需要insert into 带列
   letter2 VARCHAR(2) NOT NULL ,
   letter3 VARCHAR(3) NOT NULL ,
   numeric VARCHAR(3) NOT NULL ,
@@ -12,7 +12,7 @@ CREATE TABLE t_base_country(
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
  CREATE TABLE t_base_currency(
-  currency_id SERIAL PRIMARY KEY NOT NULL ,
+  currency_id SERIAL4 PRIMARY KEY NOT NULL ,
   alpha_code VARCHAR(6) NOT NULL ,
   number_code VARCHAR(6) NOT NULL ,
   minor_unit INT ,
@@ -25,7 +25,7 @@ CREATE TABLE t_base_country(
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
 CREATE TABLE t_base_catalog(
-  catalog_id SERIAL PRIMARY KEY NOT NULL ,
+  catalog_id SERIAL4 PRIMARY KEY NOT NULL ,
   catalog_name VARCHAR(256),
   catalog_alias VARCHAR(256),
   catalog_desc varchar(1024),
@@ -35,7 +35,7 @@ CREATE TABLE t_base_catalog(
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
 CREATE TABLE t_base_catalog_item(
-  catalog_item_id SERIAL PRIMARY KEY NOT NULL ,
+  catalog_item_id SERIAL4 PRIMARY KEY NOT NULL ,
   catalog_id INT,
   item_name VARCHAR(256),
   item_value varchar(1024),
@@ -47,7 +47,7 @@ CREATE TABLE t_base_catalog_item(
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
 CREATE TABLE t_base_country_group(
-  group_item_id SERIAL PRIMARY KEY NOT NULL ,
+  group_item_id SERIAL4 PRIMARY KEY NOT NULL ,
   catalog_item_id INT,
   country_id INT,
   group_index INT,
