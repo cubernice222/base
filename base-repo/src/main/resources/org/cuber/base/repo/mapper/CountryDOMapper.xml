@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.CountryDOMapper">
+  <resultMap id="BaseResultMap" type="org.cuber.base.repo.model.CountryDO">
+    <id column="country_id" jdbcType="INTEGER" property="countryId" />
+    <result column="letter2" jdbcType="VARCHAR" property="letter2" />
+    <result column="letter3" jdbcType="VARCHAR" property="letter3" />
+    <result column="numeric" jdbcType="VARCHAR" property="numeric" />
+    <result column="iso3166_2" jdbcType="VARCHAR" property="iso31662" />
+    <result column="country_en" jdbcType="VARCHAR" property="countryEn" />
+    <result column="country_cn" jdbcType="VARCHAR" property="countryCn" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    country_id, letter2, letter3, numeric, iso3166_2, country_en, country_cn, status, 
+    operator, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_base_country
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_base_country
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cuber.base.repo.model.CountryDO">
+    insert into t_base_country (country_id, letter2, letter3, 
+      numeric, iso3166_2, country_en, 
+      country_cn, status, operator, 
+      update_time, create_time)
+    values (#{countryId,jdbcType=INTEGER}, #{letter2,jdbcType=VARCHAR}, #{letter3,jdbcType=VARCHAR}, 
+      #{numeric,jdbcType=VARCHAR}, #{iso31662,jdbcType=VARCHAR}, #{countryEn,jdbcType=VARCHAR}, 
+      #{countryCn,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.cuber.base.repo.model.CountryDO">
+    insert into t_base_country
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryId != null">
+        country_id,
+      </if>
+      <if test="letter2 != null">
+        letter2,
+      </if>
+      <if test="letter3 != null">
+        letter3,
+      </if>
+      <if test="numeric != null">
+        numeric,
+      </if>
+      <if test="iso31662 != null">
+        iso3166_2,
+      </if>
+      <if test="countryEn != null">
+        country_en,
+      </if>
+      <if test="countryCn != null">
+        country_cn,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryId != null">
+        #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="letter2 != null">
+        #{letter2,jdbcType=VARCHAR},
+      </if>
+      <if test="letter3 != null">
+        #{letter3,jdbcType=VARCHAR},
+      </if>
+      <if test="numeric != null">
+        #{numeric,jdbcType=VARCHAR},
+      </if>
+      <if test="iso31662 != null">
+        #{iso31662,jdbcType=VARCHAR},
+      </if>
+      <if test="countryEn != null">
+        #{countryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCn != null">
+        #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.cuber.base.repo.model.CountryDO">
+    update t_base_country
+    <set>
+      <if test="letter2 != null">
+        letter2 = #{letter2,jdbcType=VARCHAR},
+      </if>
+      <if test="letter3 != null">
+        letter3 = #{letter3,jdbcType=VARCHAR},
+      </if>
+      <if test="numeric != null">
+        numeric = #{numeric,jdbcType=VARCHAR},
+      </if>
+      <if test="iso31662 != null">
+        iso3166_2 = #{iso31662,jdbcType=VARCHAR},
+      </if>
+      <if test="countryEn != null">
+        country_en = #{countryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCn != null">
+        country_cn = #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.cuber.base.repo.model.CountryDO">
+    update t_base_country
+    set letter2 = #{letter2,jdbcType=VARCHAR},
+      letter3 = #{letter3,jdbcType=VARCHAR},
+      numeric = #{numeric,jdbcType=VARCHAR},
+      iso3166_2 = #{iso31662,jdbcType=VARCHAR},
+      country_en = #{countryEn,jdbcType=VARCHAR},
+      country_cn = #{countryCn,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </update>
+</mapper>
