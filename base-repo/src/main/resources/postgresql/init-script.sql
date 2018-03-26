@@ -67,3 +67,11 @@ CREATE TABLE t_base_currency_group(
   update_time TIMESTAMP WITHOUT TIME ZONE,
   create_time TIMESTAMP WITHOUT TIME ZONE
 );
+
+CREATE UNIQUE INDEX IDX_UNQ_CATALOG_NAME ON t_base_catalog USING BTREE (catalog_name);
+
+CREATE UNIQUE INDEX IDX_UNQ_CATALOG_ITEM_NAME_CATALOG_ID ON t_base_catalog_item USING BTREE (catalog_id,item_name);
+
+CREATE UNIQUE INDEX IDX_UNQ_COUNTRY_GROUP_ITEM_ID_COUNTRY_ID ON t_base_country_group USING BTREE(catalog_item_id,country_id);
+
+CREATE UNIQUE INDEX IDX_UNQ_CURRENCY_GROUP_ITEM_ID_CURRENCY_ID ON t_base_currency_group USING BTREE(catalog_item_id,currency_id);
