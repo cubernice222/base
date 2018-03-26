@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.CountryGroupDOMapper">
+  <resultMap id="BaseResultMap" type="org.cuber.base.repo.model.CountryGroupDO">
+    <id column="group_item_id" jdbcType="INTEGER" property="groupItemId" />
+    <result column="catalog_item_id" jdbcType="INTEGER" property="catalogItemId" />
+    <result column="country_id" jdbcType="INTEGER" property="countryId" />
+    <result column="group_index" jdbcType="INTEGER" property="groupIndex" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    group_item_id, catalog_item_id, country_id, group_index, status, operator, update_time, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_base_country_group
+    where group_item_id = #{groupItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_base_country_group
+    where group_item_id = #{groupItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cuber.base.repo.model.CountryGroupDO">
+    <selectKey keyProperty="groupItemId" resultType="int" order="BEFORE">
+      SELECT nextval('t_base_country_group_group_item_id_seq'::regclass) as group_item_id
+    </selectKey>
+    insert into t_base_country_group (group_item_id, catalog_item_id, country_id, 
+      group_index, status, operator, 
+      update_time, create_time)
+    values (#{groupItemId,jdbcType=INTEGER}, #{catalogItemId,jdbcType=INTEGER}, #{countryId,jdbcType=INTEGER}, 
+      #{groupIndex,jdbcType=INTEGER}, '1', #{operator,jdbcType=VARCHAR},
+    current_timestamp, current_timestamp)
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.cuber.base.repo.model.CountryGroupDO">
+    update t_base_country_group
+    set catalog_item_id = #{catalogItemId,jdbcType=INTEGER},
+      country_id = #{countryId,jdbcType=INTEGER},
+      group_index = #{groupIndex,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      update_time = current_timestamp
+    where group_item_id = #{groupItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

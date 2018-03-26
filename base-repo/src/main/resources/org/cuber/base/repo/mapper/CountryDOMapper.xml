@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.CountryDOMapper">
+  <resultMap id="BaseResultMap" type="org.cuber.base.repo.model.CountryDO">
+    <id column="country_id" jdbcType="INTEGER" property="countryId" />
+    <result column="letter2" jdbcType="VARCHAR" property="letter2" />
+    <result column="letter3" jdbcType="VARCHAR" property="letter3" />
+    <result column="numeric" jdbcType="VARCHAR" property="numeric" />
+    <result column="iso3166_2" jdbcType="VARCHAR" property="iso31662" />
+    <result column="country_en" jdbcType="VARCHAR" property="countryEn" />
+    <result column="country_cn" jdbcType="VARCHAR" property="countryCn" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    country_id, letter2, letter3, numeric, iso3166_2, country_en, country_cn, status, 
+    operator, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_base_country
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_base_country
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cuber.base.repo.model.CountryDO">
+    <selectKey keyProperty="countryId" resultType="int" order="BEFORE">
+      SELECT nextval('t_base_country_country_id_seq'::regclass) as country_id
+    </selectKey>
+    insert into t_base_country (country_id, letter2, letter3, 
+      numeric, iso3166_2, country_en, 
+      country_cn, status, operator, 
+      update_time, create_time)
+    values (#{countryId,jdbcType=INTEGER}, #{letter2,jdbcType=VARCHAR}, #{letter3,jdbcType=VARCHAR}, 
+      #{numeric,jdbcType=VARCHAR}, #{iso31662,jdbcType=VARCHAR}, #{countryEn,jdbcType=VARCHAR}, 
+      #{countryCn,jdbcType=VARCHAR}, '1', #{operator,jdbcType=VARCHAR},
+    current_timestamp, current_timestamp)
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.cuber.base.repo.model.CountryDO">
+    update t_base_country
+    set letter2 = #{letter2,jdbcType=VARCHAR},
+      letter3 = #{letter3,jdbcType=VARCHAR},
+      numeric = #{numeric,jdbcType=VARCHAR},
+      iso3166_2 = #{iso31662,jdbcType=VARCHAR},
+      country_en = #{countryEn,jdbcType=VARCHAR},
+      country_cn = #{countryCn,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      update_time = current_timestamp
+    where country_id = #{countryId,jdbcType=INTEGER}
+  </update>
+</mapper>

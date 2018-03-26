@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cuber.base.repo.mapper.CurrencyDOMapper">
+  <resultMap id="BaseResultMap" type="org.cuber.base.repo.model.CurrencyDO">
+    <id column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="alpha_code" jdbcType="VARCHAR" property="alphaCode" />
+    <result column="number_code" jdbcType="VARCHAR" property="numberCode" />
+    <result column="minor_unit" jdbcType="INTEGER" property="minorUnit" />
+    <result column="symbol_currency" jdbcType="VARCHAR" property="symbolCurrency" />
+    <result column="locale_message" jdbcType="VARCHAR" property="localeMessage" />
+    <result column="zh_cn_name" jdbcType="VARCHAR" property="zhCnName" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    currency_id, alpha_code, number_code, minor_unit, symbol_currency, locale_message, 
+    zh_cn_name, status, operator, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_base_currency
+    where currency_id = #{currencyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_base_currency
+    where currency_id = #{currencyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cuber.base.repo.model.CurrencyDO">
+    <selectKey keyProperty="currencyId" resultType="int" order="BEFORE">
+      SELECT nextval('t_base_currency_currency_id_seq'::regclass) as currency_id
+    </selectKey>
+    insert into t_base_currency (currency_id, alpha_code, number_code, 
+      minor_unit, symbol_currency, locale_message, 
+      zh_cn_name, status, operator, 
+      update_time, create_time)
+    values (#{currencyId,jdbcType=INTEGER}, #{alphaCode,jdbcType=VARCHAR}, #{numberCode,jdbcType=VARCHAR}, 
+      #{minorUnit,jdbcType=INTEGER}, #{symbolCurrency,jdbcType=VARCHAR}, #{localeMessage,jdbcType=VARCHAR}, 
+      #{zhCnName,jdbcType=VARCHAR}, '1', #{operator,jdbcType=VARCHAR},
+    current_timestamp, current_timestamp)
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.cuber.base.repo.model.CurrencyDO">
+    update t_base_currency
+    set alpha_code = #{alphaCode,jdbcType=VARCHAR},
+      number_code = #{numberCode,jdbcType=VARCHAR},
+      minor_unit = #{minorUnit,jdbcType=INTEGER},
+      symbol_currency = #{symbolCurrency,jdbcType=VARCHAR},
+      locale_message = #{localeMessage,jdbcType=VARCHAR},
+      zh_cn_name = #{zhCnName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      update_time = current_timestamp
+    where currency_id = #{currencyId,jdbcType=INTEGER}
+  </update>
+</mapper>
