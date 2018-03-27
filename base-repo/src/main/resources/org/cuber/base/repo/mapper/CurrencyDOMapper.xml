@@ -54,4 +54,24 @@
       update_time = current_timestamp
     where currency_id = #{currencyId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectValidByAlphaCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_currency
+    where
+      alpha_code = #{alphaCode,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
+
+  <select id="selectValidByNumberCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_currency
+    where
+      number_code = #{numberCode,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
 </mapper>

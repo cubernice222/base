@@ -2,6 +2,8 @@ package org.cuber.base.repo.mapper;
 
 import org.cuber.base.repo.model.CurrencyGroupDO;
 
+import java.util.List;
+
 public interface CurrencyGroupDOMapper {
     int deleteByPrimaryKey(Integer currencyGroupId);
 
@@ -10,4 +12,6 @@ public interface CurrencyGroupDOMapper {
     CurrencyGroupDO selectByPrimaryKey(Integer currencyGroupId);
 
     int updateByPrimaryKey(CurrencyGroupDO record);
+
+    List<CurrencyGroupDO> selectValidByCatalogItemId(Integer catalogItemId);
 }

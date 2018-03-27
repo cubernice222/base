@@ -53,4 +53,14 @@
       update_time = current_timestamp
     where catalog_item_id = #{catalogItemId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectValidByCatalogId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_catalog_item
+    where
+      catalog_id = #{catalogId,jdbcType=INTEGER}
+    AND
+      status = '1'
+  </select>
 </mapper>

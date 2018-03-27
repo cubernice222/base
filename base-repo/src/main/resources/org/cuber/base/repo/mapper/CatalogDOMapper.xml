@@ -49,4 +49,15 @@
       current_timestamp
     where catalog_id = #{catalogId,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectValidByCatalogName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_catalog
+    where
+      catalog_name = #{catalogName,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
 </mapper>

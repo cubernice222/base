@@ -54,4 +54,34 @@
       update_time = current_timestamp
     where country_id = #{countryId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectValidByLetter2" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_country
+    where
+      letter2 = #{letter2,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
+
+  <select id="selectValidByLetter3" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_country
+    where
+      letter3 = #{letter3,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
+
+  <select id="selectValidByNumeric" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_country
+    where
+      numeric = #{numeric,jdbcType=VARCHAR}
+    AND
+      status = '1'
+  </select>
 </mapper>

@@ -46,4 +46,14 @@
       update_time = current_timestamp
     where currency_group_id = #{currencyGroupId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_base_currency_group
+    where
+      catalog_item_id = #{catalogItemId,jdbcType=INTEGER}
+    AND
+      status = '1'
+  </select>
 </mapper>
